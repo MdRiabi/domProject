@@ -9,3 +9,13 @@ const addMovieModal = document.getElementById('add-modal');
 
 const startAddMovieButton = document.querySelector('header button');
 //const addMovieButton = document.querySelector('header').lastElementChild; this way is not preferred for selecting elements because devolper can change the last element in the header element
+
+//adding an enentListner to the add button for showing the add modal
+
+const toogleMovieModal = () => {
+
+    addMovieModal.classList.toggle('visible');
+
+};
+
+startAddMovieButton.addEventListener('click', toogleMovieModal);
