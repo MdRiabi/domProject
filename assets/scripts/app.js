@@ -22,6 +22,7 @@ const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling; // for se
 const userInputs = addMovieModal.querySelectorAll('input');
 //const userInput = addMovieModal.getElementsByTagName('input');
 
+//next step is creating a movie 
 
 
 const toggleBackdrop = () => {
