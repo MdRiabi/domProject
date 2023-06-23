@@ -17,6 +17,11 @@ const backdrop = document.getElementById('backdrop');
 
 // sellecting the cancel button
 const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
+const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling; // for sellecting the add button
+//sellecting all the inputs
+const userInputs = addMovieModal.querySelectorAll('input');
+//const userInput = addMovieModal.getElementsByTagName('input');
+
 
 
 const toggleBackdrop = () => {
@@ -34,13 +39,26 @@ const toogleMovieModal = () => {
 const backdropClickHandler = () => {
     toogleMovieModal();
 };
-const cancelAddMovie = () => {
+const cancelAddMovieHandler = () => {
     toogleMovieModal();
+};
+
+const addMovieHandler = () => {
+
+    const titleValue = userInputs[0].value;
+    const imageUrlValue = userInputs[1].value;
+    const ratingValue = userInputs[2].value;
+
+    if(titleValue.trim()=== ''|| imageUrlValue.trim()=== ''||ratingValue.trim()===''||+ratingValue<1 ||+ratingValue>5){
+        alert('Please fill in all the fields');
+        return;
+    }
 };
 
 startAddMovieButton.addEventListener('click', toogleMovieModal);
 backdrop.addEventListener('click', backdropClickHandler);
-cancelAddMovieButton.addEventListener('click', cancelAddMovie);
+cancelAddMovieButton.addEventListener('click', cancelAddMovieHandler);
+confirmAddMovieButton.addEventListener('click',addMovieHandler );
 
 
 
