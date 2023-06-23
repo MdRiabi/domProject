@@ -10,12 +10,65 @@ const addMovieModal = document.getElementById('add-modal');
 const startAddMovieButton = document.querySelector('header button');
 //const addMovieButton = document.querySelector('header').lastElementChild; this way is not preferred for selecting elements because devolper can change the last element in the header element
 
+//selecting the backdor element in the body by two ways to select
+
+//const backButton = document.body.firstElementChild
+const backdrop = document.getElementById('backdrop');
+
+// sellecting the cancel button
+const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
+
+
+const toggleBackdrop = () => {
+    backdrop.classList.toggle('visible');
+};
+
+
 //adding an enentListner to the add button for showing the add modal
 
 const toogleMovieModal = () => {
-
     addMovieModal.classList.toggle('visible');
+    toggleBackdrop()
+};
 
+const backdropClickHandler = () => {
+    toogleMovieModal();
+};
+const cancelAddMovie = () => {
+    toogleMovieModal();
 };
 
 startAddMovieButton.addEventListener('click', toogleMovieModal);
+backdrop.addEventListener('click', backdropClickHandler);
+cancelAddMovieButton.addEventListener('click', cancelAddMovie);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
