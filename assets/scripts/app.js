@@ -4,14 +4,11 @@ const addMovieModal = document.getElementById('add-modal');
 //const addMovieModal = document.querySelector('#add-modal'); we add the # if the element has an ID
 //const addMovieModal = document.body.children[1];
 
-
 //selecting the buuton element in the header element using two ways to select
-
 const startAddMovieButton = document.querySelector('header button');
 //const addMovieButton = document.querySelector('header').lastElementChild; this way is not preferred for selecting elements because devolper can change the last element in the header element
 
 //selecting the backdor element in the body by two ways to select
-
 //const backButton = document.body.firstElementChild
 const backdrop = document.getElementById('backdrop');
 
@@ -24,11 +21,11 @@ const userInputs = addMovieModal.querySelectorAll('input');
 
 //next step is creating a movie 
 
+const movies =[];
 
 const toggleBackdrop = () => {
     backdrop.classList.toggle('visible');
 };
-
 
 //adding an enentListner to the add button for showing the add modal
 
@@ -37,12 +34,31 @@ const toogleMovieModal = () => {
     toggleBackdrop()
 };
 
+
+
 const backdropClickHandler = () => {
     toogleMovieModal();
 };
+
+
+
 const cancelAddMovieHandler = () => {
     toogleMovieModal();
+    clearMovieInput();
 };
+
+
+
+const clearMovieInput = () =>{
+
+    for(const userInput of userInputs)
+    {
+        userInput.value="";
+    }
+};
+
+
+
 
 const addMovieHandler = () => {
 
@@ -54,7 +70,19 @@ const addMovieHandler = () => {
         alert('Please fill in all the fields');
         return;
     }
+    const newMovie = {
+        title: titleValue,
+        image: imageUrlValue,
+        rating: ratingValue
+    };
+    
+    movies.push(newMovie);
+    console.log(movies);
+    toogleMovieModal();
+    clearMovieInput();
 };
+
+
 
 startAddMovieButton.addEventListener('click', toogleMovieModal);
 backdrop.addEventListener('click', backdropClickHandler);
