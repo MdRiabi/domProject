@@ -142,6 +142,7 @@ backdrop.addEventListener('click', backdropClickHandler);
 cancelAddMovieButton.addEventListener('click', cancelAddMovieHandler);
 confirmAddMovieButton.addEventListener('click',addMovieHandler );
 
+35. Deleting Movie Elements
 
 
 
