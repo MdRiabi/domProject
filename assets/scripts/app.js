@@ -22,6 +22,40 @@ const userInputs = addMovieModal.querySelectorAll('input');
 //next step is creating a movie 
 
 const movies =[];
+// select the entry-text id of the section element 
+const entryTextSection = document.getElementById('entry-text');
+
+//updateUI for checking if the user enter already movie in the movies array
+
+const updateUI = () =>{
+    if(movies.length === 0){
+
+        entryTextSection.style.display = 'block';
+    }
+    else{
+        entryTextSection.style.display = 'none';
+    }
+};
+
+// rendring the user input in the movies array and hiding the <p> enlemnt wich is in section element 
+const renderNewMovieElement = (title , imageUrl , rating) => {
+
+    const newMovieElement = document.createElement('li');
+    newMovieElement.className = 'movie-element';
+    newMovieElement.innerHTML = `
+    <div class= "movie-element__image">
+    <img src="${imageUrl}" alt="${title}">
+    </div>
+    <div>
+    <h2>${title}</h2>
+    <p>${rating}/5 stars </p>
+    </div>
+    `;
+    const listRoot = document.getElementById('movie-list');
+    listRoot.append(newMovieElement);
+
+};
+
 
 const toggleBackdrop = () => {
     backdrop.classList.toggle('visible');
@@ -80,6 +114,8 @@ const addMovieHandler = () => {
     console.log(movies);
     toogleMovieModal();
     clearMovieInput();
+    renderNewMovieElement(newMovie.title , newMovie.image , newMovie.rating);
+    updateUI();
 };
 
 
